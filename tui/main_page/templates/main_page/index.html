@@ -1,0 +1,39 @@
+{% extends 'main_page/base.html'%}
+
+{% block content %}
+<ul class='.product'>
+  {% for plant in tui %}
+    {% if plant.image %}
+        <p><img class="img-article-left" src="{{plant.image.url}}"></p>
+    {% endif%}
+        <li><h2 class="text-style">{{plant.title}}</h2></li>
+        <p class=".text-style">{{plant.content|truncatewords:50}}</p>
+        <div class="clear"></div>
+  <p class="link-read-post"><a href="{{ plant.get_absolute_url }}">Подробнее</a></p>
+  <hr>
+  {% endfor %}
+  {% if page_obj.has_other_pages %}
+    <nav class="pagination a">
+        {% if page_obj.has_previous %}
+        <li class="pagination a">
+            <a href="?page={{ page_obj.previous_page_number }}">&lt;</a>
+        </li>
+        {% endif %}
+        {% for p in paginator.page_range %}
+        {% if page_obj.number == p %}
+            <li class="pagination active ">{{p}}</li>
+        {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2%}
+        <li class="pagination a">
+            <a href="?page={{p}}">{{p}}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        <li class="pagination a">
+            <a href="?page={{ page_obj.next_page_number }}">&gt;</a>
+        </li>
+        {% endif %}
+    </nav>
+  {% endif %}
+
+{% endblock content %}
