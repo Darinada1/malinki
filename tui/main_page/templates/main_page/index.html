@@ -1,17 +1,38 @@
 {% extends 'main_page/base.html'%}
+{% load static %}
 
 {% block content %}
-<ul class='.product-grid'>
-  {% for plant in tui %}
-    {% if plant.image %}
-        <p><img class="img-article-left" src="{{plant.image.url}}"></p>
-    {% endif%}
-        <h2 class="text-style">{{plant.title}}</h2>
-        <p class="text-style">{{plant.content|truncatewords:120}}</p>
-        <div class="clear"></div>
-  <p class="link-read-post"><a href="{{ plant.get_absolute_url }}">Подробнее</a></p>
-  <hr>
-  {% endfor %}
+<style>
+.grid-container {
+  display: grid;
+  column-gap: 50px;
+  row-gap: 70px;
+  grid-template-columns: auto auto;
+  padding: 10px;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 30px;
+  font-size: 30px;
+  text-align: center;
+}
+</style>
+
+<div class="grid-container">
+    {% for plant in tui %}
+        <div class="grid-item">
+            <img class="img-article-left" src="{{plant.image.url}}">
+            <h2 class="text-style">{{plant.title}}</h2>
+            <p class="text-style">{{plant.content|truncatewords:30}}</p>
+            <div class="clear"></div>
+            <p class="link-read-post"><a class="text-style" href="{{ plant.get_absolute_url }}">Подробнее</a></p>
+        </div>
+
+    {% endfor %}
+
+</div>
   {% if page_obj.has_other_pages %}
     <nav class="pagination a">
         {% if page_obj.has_previous %}

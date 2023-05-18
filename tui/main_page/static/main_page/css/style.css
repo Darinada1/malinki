@@ -76,7 +76,7 @@ ul.list-articles li {
 .clear {clear: both;}
 
 .header {
-	background: #3F4137;
+	background: #808080;
 	height: 60px;
 }
 
@@ -103,7 +103,7 @@ ul.mainmenu li.logo {margin: 0;}
 ul.mainmenu li.last {float: right;}
 
 ul.mainmenu li a {
-	color: #fdc073;
+	color: #fff;
 	text-decoration: none;
 }
 ul.mainmenu li a:hover {
@@ -146,12 +146,13 @@ ul.langitem li a:hover {
 	color: #FDA83D;
 }
 div.button {
-	background: #3F4137;
+	background: #808080;
 	max-width: 200px;
 	margin: 0 auto;
 	padding: 5px 20px 5px 20px;
 	border-radius: 10px;
 	font-size: 20px;
+	float: right;
 }
 
 .table-content {
@@ -355,8 +356,7 @@ ul.lang-list li a:hover {color: #fdc073;}
 
 #footer {
 	box-sizing: border-box;
-
-	background: #3F4137;
+	background: #e7ffde;
 	padding: 5px;
 	color: #aaa;
 	font-size: 14px;
@@ -513,4 +513,3 @@ ul.lang-list li a:hover {color: #fdc073;}
   flex: 1;
   padding: 20px;
 }
-
